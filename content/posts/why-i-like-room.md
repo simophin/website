@@ -91,3 +91,12 @@ This of course, will cause implementation details - the Realm library - to leak 
 Of course, as stated before, you can still implement the `List` version of interface safely, by coping the data from
 the live Realm objects into a POJO version. Ha! This is exactly what we are talking about, live object is just so 
 against common software pattern that I don't think it's worth the cost!
+
+
+How does the Room compare, you ask.
+
+> Simply no live objects, no lazy loading. You get exactly what you ask for, in one go.
+
+Wouldn't it be slow if you don't have lazy loading?
+
+> It would only be slow if you load unnecessary data. If don't want the relationed objects, 
