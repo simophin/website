@@ -1,3 +1,3 @@
 ---
-title: "Welcome the new era"
+title: "Lifeless code is codeless life"
 ---

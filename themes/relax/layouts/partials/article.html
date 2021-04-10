@@ -7,6 +7,13 @@
     {{- end }}
   </section>
   <section class="content">
-    {{ .Content }}
+    {{ if .IsHome }}
+    {{ .Summary }}
+      {{ if .Truncated }}
+        <p><a href="{{ .RelPermalink }}">More</a></p>
+      {{ end }}
+    {{ else }}
+    {{ .Summary }}
+    {{ end }}
   </section>
 </article>

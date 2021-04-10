@@ -2,7 +2,23 @@
 <main>
     {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
     {{ range $paginator.Pages }}
-        {{ partial "article.html" . }}
+        <article>
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <section class="header">
+                <p class="published">Published: <time datetime="{{ .PublishDate }}">{{ .PublishDate }}</time></p>
+                {{ if not (eq .PublishDate .Lastmod) -}}
+                <p class="updated">Updated: <time datetime="{{ .Lastmod }}">{{ .Lastmod }}</time></p>
+                {{- end }}
+            </section>
+            <section class="content">
+                {{ if .Truncated }}
+                {{ .Summary }}
+                <p><a href="{{ .RelPermalink }}">More</a></p>
+                {{ else }}
+                {{ .Content }}
+                {{ end }}
+            </section>
+        </article>
     {{ end }}
 
     {{ template "_internal/pagination.html" . }}
