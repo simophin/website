@@ -1,0 +1,16 @@
+image: docker:18
+
+stages:
+  - deploy
+  - push
+
+before_script:
+  - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+
+Build:
+  stage: deploy
+  only:
+    - master
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:latest
+    - docker push $CI_REGISTRY_IMAGE:latest
