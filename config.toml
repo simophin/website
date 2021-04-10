@@ -1,0 +1,16 @@
+baseURL = "http://example.org/"
+languageCode = "en-nz"
+title = "Fanchao's Nest"
+theme = "relax"
+paginate = 10
+
+[menu]
+[[menu.main]]
+name = "home"
+url = "/"
+weight = -120
+
+[[menu.main]]
+name = "about"
+url = "/about/"
+weight = -110

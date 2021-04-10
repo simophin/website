@@ -1,0 +1,10 @@
+{{ define "main" }}
+<main>
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+    {{ range $paginator.Pages }}
+        {{ partial "article.html" . }}
+    {{ end }}
+
+    {{ template "_internal/pagination.html" . }}
+</main>
+{{ end }}

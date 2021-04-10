@@ -1,0 +1,14 @@
+<header>
+    <h1>Fanchao's Nest</h1>
+    {{ with .Site.Home -}}
+        <i>{{ .Title }}</i>
+    {{- end }}
+    {{ with .Site.Menus.main -}}
+    <section class="menu">
+        {{ range . }}
+        <span><a href="{{ .URL }}">{{ .Name }}</a></span>
+        {{ end }}
+    </section>
+    {{- end }}
+    <hr />
+</header>

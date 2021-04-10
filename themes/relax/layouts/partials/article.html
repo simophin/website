@@ -1,0 +1,12 @@
+<article>
+  <h2><a href="{{ .URL }}">{{ .Title }}</a></h2>
+  <section class="header">
+    <p class="published">Published: <time datetime="{{ .PublishDate }}">{{ .PublishDate }}</time></p>
+    {{ if not (eq .PublishDate .Lastmod) -}}
+    <p class="updated">Updated: <time datetime="{{ .Lastmod }}">{{ .Lastmod }}</time></p>
+    {{- end }}
+  </section>
+  <section class="content">
+    {{ .Content }}
+  </section>
+</article>
