@@ -1,5 +1,5 @@
 <article>
-  <h2><a href="{{ .URL }}">{{ .Title }}</a></h2>
+  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
   <section class="header">
     <p class="published">Published: <time datetime="{{ .PublishDate }}">{{ .PublishDate }}</time></p>
     {{ if not (eq .PublishDate .Lastmod) -}}

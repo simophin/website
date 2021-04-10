@@ -5,9 +5,9 @@
     {{- end }}
     {{ with .Site.Menus.main -}}
     <section class="menu">
-        {{ range . }}
+        {{ range . -}}
         <span><a href="{{ .URL }}">{{ .Name }}</a></span>
-        {{ end }}
+        {{- end }}
     </section>
     {{- end }}
     <hr />
