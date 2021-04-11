@@ -1,8 +1,6 @@
 <header>
-    <h1>Fanchao's Nest</h1>
-    {{ with .Site.Home -}}
-        <i>{{ .Title }}</i>
-    {{- end }}
+    <div class="title">Fanchao's Nest</div>
+    <div class="spacer"></div>
     {{ with .Site.Menus.main -}}
     <section class="menu">
         {{ range . -}}
@@ -10,5 +8,4 @@
         {{- end }}
     </section>
     {{- end }}
-    <hr />
 </header>

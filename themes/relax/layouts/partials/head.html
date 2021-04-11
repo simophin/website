@@ -4,13 +4,57 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <style>
-    section.menu > * {
+    header {
+        display: flex;
+        position: fixed;
+        background-color: #d5e1df;
+        width: 100%;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    header .title {
+        font-size: 20px;
+        margin: 8px;
+        font-weight: bold;
+    }
+
+    header .subtitle {
+        font-size: 12px;
+        font-style: italic;
+        font-weight: lighter;
+        margin-left: 4px;
+    }
+
+    header .menu {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    header .menu a {
+        color: black;
+        padding: 4px;
+    }
+
+    header .menu a:hover {
+        background-color: #c4d0ce;
+    }
+
+    header .spacer {
+        flex-grow: 1;
+    }
+
+    header + * {
+        max-width: 700px;
+        margin: 50px auto;
+        padding-left: 8px;
         padding-right: 8px;
     }
 
     body {
-        max-width: 700px;
-        margin: auto;
         font-family: 'Source Sans Pro', sans-serif;
     }
+
 </style>
