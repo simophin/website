@@ -12,7 +12,7 @@ The last thing I want to do is debugging some weird data issues with live Hibern
 early adopter of Android's Room library, I must admit this is the one thing that satisfies me on every
 aspect.
 
-So what are my problems with ORM frameworks?
+So what are my problems with common ORM frameworks?
 
 ### Live object is a sin
 
@@ -89,8 +89,8 @@ the interface users are bound to misuse it by passing it around! So it's far bet
 This of course, will cause implementation details - the Realm library - to leak all over your codebase. 
 
 Of course, as stated before, you can still implement the `List` version of interface safely, by coping the data from
-the live Realm objects into a POJO version. Ha! This is exactly what we are talking about, live object is just so 
-against common software pattern that I don't think it's worth the cost!
+the live Realm objects into a POJO version. Ha! This is exactly what we are talking about, if you have to copy a live
+object to a plain object to be able to use it, why use live object to start with?
 
 
 How does the Room compare, you ask.
@@ -99,4 +99,55 @@ How does the Room compare, you ask.
 
 Wouldn't it be slow if you don't have lazy loading?
 
-> It would only be slow if you load unnecessary data. If don't want the relationed objects, 
+> It would only be slow if you load unnecessary data. The idea of lazy loading is just to minimise unnecessary loading,
+> if you do need the data, the cost is the same regardless to lazy loading or not.
+
+### SQL is powerful, why abandon it?
+
+I think a lot of people coming to ORM land because they don't want to write raw SQL. The argument being:
+
+1. SQL is text-based, it's error prone
+2. SQL is bound to specified database, it's not easy to migrate to other db
+3. Prone to injection attack
+
+Unlike argument like "SQL is hard to write", these are valid arguments. SQL is not hard to write at all, if anything
+it's easier than your everyday programming language.
+
+I'll explain my counter-argument to each one.
+
+> 1. SQL is text-based, it's error prone
+ 
+It's true _if_ you have to write the SQL _without any help_. Room provides compile time check into the SQLs you are 
+running, if you misspell a table name you will get a compilation error. At the end of the day, one of ORM's jobs is to
+translate your programming language's idiom into plain SQLs. How about you just write SQL and ask ORM to check it for 
+you? So you don't need to limit yourself to the ORM's often-not-very-powerful-abstraction?
+
+> 2. SQL is bound to specified database, it's not easy to migrate to other db
+
+I'm not going to argument with this one, because it is the most disadvantage point of using raw SQLs: you are losing
+the platform-agonic feature of ORM. I have to argument that, though, the changing of database engine is very unlikely
+once your product goes to production. Also in a large system spanning over years, there are bound to be instances that
+someone already fall back into using raw SQLs in the rush of some feature, this would have done serious damage to the
+promised platform-agonic ORM anyway.
+
+> 3. Prone to injection attack
+
+Again, it's only true if you write SQL without help. A decent ORM should let you write SQL safely. Room can provide
+that.
+
+### API should guard against misuse
+
+This is the most important part of my decision-making process. You can have the greatest framework that can do
+everything you want, like Hibernate. However, if your framework is filled with caveats, and you have to go through
+documentation to find out about them, or you have to wait until a production bug coming along, your framework sucks.
+The best kind of API is the one that, any invalid input, misuse is clearly rejected upfront. Not the one with
+most features, nor the fastest speed, nor the easiest to learn. That is also a reason I like about Rust: if you can
+win the compiler, your code will work most of the time.
+
+Anyway, so what does Room do on this front? 
+
+__Checking SQL at compile time__. SQL is statically typed with Room. Room know the schema of the database at
+compile time, it knows what tables you have, what column name/type you have. It can check the binding of the SQL result
+against the actual Java field you declare, it will hassle you if they don't match, all done at compile time.
+
+__No live object__. You can do anything with the returned data. They won't change under the hood. It's truly yours.
