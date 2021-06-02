@@ -1,7 +1,6 @@
 ---
 title: "Why I Like Room"
 date: 2021-04-10T17:01:16+12:00
-draft: true
 ---
 
 This article talks about the [Room Persistent Framework](https://developer.android.com/training/data-storage/room),
@@ -150,4 +149,5 @@ __Checking SQL at compile time__. SQL is statically typed with Room. Room know t
 compile time, it knows what tables you have, what column name/type you have. It can check the binding of the SQL result
 against the actual Java field you declare, it will hassle you if they don't match, all done at compile time.
 
-__No live object__. You can do anything with the returned data. They won't change under the hood. It's truly yours.
+__No live object__. You can do anything with the returned data. They won't change under the hood. It's truly yours. 
+Immutable.
