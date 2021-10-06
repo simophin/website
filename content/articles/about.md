@@ -4,9 +4,9 @@ date: 2021-04-10T13:39:24+12:00
 url: /about
 ---
 
-Hi, my name is Fanchao. I'm a software engineer currently residing in Chrischurch, NZ.
+Hi, my name is Fanchao. I'm a software engineer currently residing in Tauranga, Bay of Plenty, NZ.
 
-I mostly do Java and React Native stuff at work, but I'm also keen on a broad range of geeky stuff.
+I mostly do Android stuff at work, but I'm also keen on a broad range of geeky stuff.
 You can probably sense that from the diversity of the blog posts.
 
 Ok, why does this website look so primitive and ugly? You ask. 
