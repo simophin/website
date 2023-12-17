@@ -1,10 +1,10 @@
 ---
 title: "About"
-date: 2021-04-10T13:39:24+12:00
+date: 2023-12-17T13:39:24+10:00
 url: /about
 ---
 
-Hi, my name is Fanchao. I'm a software engineer currently residing in Tauranga, Bay of Plenty, NZ.
+Hi, my name is Fanchao. I'm a software engineer currently residing in Melbourne AU.
 
 I mostly do Android stuff at work, but I'm also keen on a broad range of geeky stuff.
 You can probably sense that from the diversity of the blog posts.
